@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Email Assistant Pro</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    
+    <!-- Fluent 2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fluentui/web-components/dist/web-components.min.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@fluentui/web-components/dist/web-components.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Tone Selector -->
+        <div class="tone-selector">
+            <fluent-select id="tone-select">
+                <fluent-option value="formal">Formal</fluent-option>
+                <fluent-option value="professional" selected>Professional</fluent-option>
+                <fluent-option value="casual">Casual</fluent-option>
+                <fluent-option value="direct">Direct</fluent-option>
+            </fluent-select>
+        </div>
+
+        <!-- Main Tabs -->
+        <fluent-tabs>
+            <fluent-tab>Reply</fluent-tab>
+            <fluent-tab>New Email</fluent-tab>
+            <fluent-tab>Analyze</fluent-tab>
+            <fluent-tab>Custom</fluent-tab>
+            
+            <!-- Reply Tab Panel -->
+            <fluent-tab-panel>
+                <div class="action-grid">
+                    <fluent-button appearance="accent" id="btn-yes" type="button">
+                        <fluent-icon symbol="checkmark"></fluent-icon>
+                        Yes
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-no" type="button">
+                        <fluent-icon symbol="dismiss"></fluent-icon>
+                        No
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-agree" type="button">
+                        <fluent-icon symbol="thumb-like"></fluent-icon>
+                        Agree
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-disagree" type="button">
+                        <fluent-icon symbol="thumb-dislike"></fluent-icon>
+                        Disagree
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-need-time" type="button">
+                        <fluent-icon symbol="clock"></fluent-icon>
+                        Need More Time
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-clarify" type="button">
+                        <fluent-icon symbol="question"></fluent-icon>
+                        Clarify
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-suggest-meeting" type="button">
+                        <fluent-icon symbol="calendar"></fluent-icon>
+                        Suggest Meeting
+                    </fluent-button>
+                </div>
+            </fluent-tab-panel>
+            
+            <!-- New Email Tab Panel -->
+            <fluent-tab-panel>
+                <div class="action-grid">
+                    <fluent-button appearance="accent" id="btn-project-update" type="button">
+                        <fluent-icon symbol="project"></fluent-icon>
+                        Project Update
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-status-report" type="button">
+                        <fluent-icon symbol="report-document"></fluent-icon>
+                        Status Report
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-meeting-invite" type="button">
+                        <fluent-icon symbol="calendar-invite"></fluent-icon>
+                        Meeting Invite
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-schedule-meeting" type="button">
+                        <fluent-icon symbol="calendar-agenda"></fluent-icon>
+                        Schedule Meeting
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-follow-up" type="button">
+                        <fluent-icon symbol="follow-up"></fluent-icon>
+                        Follow Up
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-introduction" type="button">
+                        <fluent-icon symbol="people"></fluent-icon>
+                        Introduction
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-request-info" type="button">
+                        <fluent-icon symbol="info"></fluent-icon>
+                        Request Information
+                    </fluent-button>
+                </div>
+            </fluent-tab-panel>
+            
+            <!-- Analyze Tab Panel -->
+            <fluent-tab-panel>
+                <div class="action-grid">
+                    <fluent-button appearance="accent" id="btn-proofread" type="button">
+                        <fluent-icon symbol="spell-check"></fluent-icon>
+                        Proofread
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-summarize" type="button">
+                        <fluent-icon symbol="text-bullet-list"></fluent-icon>
+                        Summarize
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-extract-tasks" type="button">
+                        <fluent-icon symbol="checkbox"></fluent-icon>
+                        Extract Tasks
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-detect-deadlines" type="button">
+                        <fluent-icon symbol="timer"></fluent-icon>
+                        Detect Deadlines
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-flag-important" type="button">
+                        <fluent-icon symbol="flag"></fluent-icon>
+                        Flag Important Points
+                    </fluent-button>
+                </div>
+            </fluent-tab-panel>
+            
+            <!-- Custom Tab Panel -->
+            <fluent-tab-panel>
+                <div class="custom-prompt">
+                    <fluent-text-area id="custom-prompt" placeholder="Enter your custom prompt here..."></fluent-text-area>
+                    <fluent-button appearance="accent" id="btn-custom-prompt" type="button">
+                        <fluent-icon symbol="send"></fluent-icon>
+                        Generate Response
+                    </fluent-button>
+                </div>
+            </fluent-tab-panel>
+        </fluent-tabs>
+
+        <!-- Loading Spinner -->
+        <div id="loading" style="display: none;">
+            <fluent-progress-ring></fluent-progress-ring>
+            <span>Processing...</span>
+        </div>
+
+        <!-- Results Area -->
+        <div id="result-container" style="display: none;">
+            <div id="result"></div>
+        </div>
+    </div>
+    <!-- Load app script after DOM is ready -->
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
