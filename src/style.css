@@ -1,4 +1,4 @@
-/* styles.css */
+/* Root Variables */
 :root {
     --surface-card: #ffffff;
     --border-width: 1px;
@@ -6,46 +6,74 @@
     --neutral-layer-1: #ffffff;
 }
 
+/* Base Styles */
 body {
     margin: 0;
-    padding: 16px;
+    padding: 12px;
     background: var(--surface-card);
     font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
+    color: #333333;
+    min-width: 280px;
 }
 
 .container {
-    padding: 16px;
+    padding: 12px;
     max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 /* Tone Selector */
 .tone-selector {
-    margin-bottom: 16px;
+    padding: 4px 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    background: #f8f8f8;
+    border: 1px solid var(--neutral-stroke-rest);
+    border-radius: 4px;
+    height: 28px;
+}
+
+.tone-selector label {
+    font-size: 13px;
+    color: #616161;
+    white-space: nowrap;
+    line-height: 24px;
+    display: flex;
     align-items: center;
 }
 
 fluent-select {
-    min-width: 150px;
+    width: 90px;
+    height: 24px;
+    border: 1px solid var(--neutral-stroke-rest);
+    border-radius: 4px;
+    font-size: 13px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
 }
 
-/* Tabs */
+/* Tabs Container */
 .tab-container {
     width: 100%;
-    margin: 20px 0;
+    margin: 0;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Tab Buttons */
 .tab-buttons {
     display: flex;
-    gap: 10px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    gap: 0;
+    border-bottom: 1px solid var(--neutral-stroke-rest);
+    background: #f8f8f8;
+    border-radius: 4px 4px 0 0;
 }
 
 .tab-btn {
@@ -53,23 +81,28 @@ fluent-select {
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 14px;
-    color: #666;
+    font-size: 13px;
+    color: #616161;
     border-bottom: 2px solid transparent;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    position: relative;
 }
 
 .tab-btn:hover {
     color: #0078d4;
+    background-color: #f0f0f0;
 }
 
 .tab-btn.active {
     color: #0078d4;
-    border-bottom: 2px solid #0078d4;
+    border-bottom-color: #0078d4;
+    font-weight: 500;
+    background: #ffffff;
 }
 
+/* Tab Content */
 .tab-content {
-    position: relative;
+    padding: 8px;
 }
 
 .tab-pane {
@@ -78,70 +111,92 @@ fluent-select {
 
 .tab-pane.active {
     display: block;
+    animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Action Grid */
+/* Action Grid Layout */
 .action-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 16px;
-    padding: 16px 0;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    padding: 8px 0;
 }
 
-fluent-button {
+/* Action Grid Button Styles */
+.action-grid fluent-button {
     width: 100%;
+    height: auto;
+    min-height: 32px;
+    padding: 4px 8px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    color: #333333;
+    font-size: 13px;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
-    gap: 8px;
-    padding: 12px;
+    gap: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.action-grid fluent-button:hover {
+    background: #f5f5f5;
+    border-color: #d0d0d0;
+}
+
+.action-grid fluent-button:active {
+    background: #ebebeb;
+    border-color: #c0c0c0;
+}
+
+.action-grid fluent-button fluent-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 /* Custom Input Section */
 .custom-input-section {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 12px;
+    padding: 12px;
     border-top: 1px solid var(--neutral-stroke-rest);
 }
 
 .custom-input-section fluent-text-area {
     width: 100%;
-    min-height: 80px;
-    margin-bottom: 10px;
+    min-height: 60px;
+    margin-bottom: 8px;
     border: var(--border-width) solid var(--neutral-stroke-rest);
     border-radius: 4px;
+    padding: 8px;
+    font-family: inherit;
 }
 
 .custom-input-section fluent-button {
     width: 100%;
-    justify-content: center;
-}
-
-fluent-text-area {
-    width: 100%;
-    min-height: 120px;
-    margin-bottom: 16px;
-}
-
-.custom-options {
+    height: 32px;
+    background: #0078d4;
+    color: #ffffff;
+    border: none;
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-top: 8px;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 6px;
+    font-size: 13px;
+    transition: background-color 0.2s ease;
 }
 
-.templates-section {
-    margin-top: 16px;
-    display: flex;
-    gap: 8px;
+.custom-input-section fluent-button:hover {
+    background: #106ebe;
 }
 
-/* Loading State */
+.custom-input-section fluent-button:active {
+    background: #005a9e;
+}
+
+/* Loading Indicator */
 #loading {
     position: absolute;
     top: 0;
@@ -153,79 +208,124 @@ fluent-text-area {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin: 16px 0;
-    z-index: 1000;
     padding: 16px;
+    z-index: 1000;
+}
+
+.result-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 10;
 }
 
-#loading:not(.hidden) {
-    display: flex;
+.result-loading fluent-progress-ring {
+    width: 24px;
+    height: 24px;
+    --accent-foreground-rest: #0078d4;
 }
 
-#loading fluent-progress-ring {
-    width: 32px;
-    height: 32px;
-}
-
-#loading span {
-    font-size: 14px;
-    color: #666;
+.result-loading span {
+    font-size: 13px;
+    color: #666666;
 }
 
 /* Results Container */
 #result-container {
-    display: none;
-    margin-top: 16px;
-    padding: 16px;
-    border: 1px solid #ccc;
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
     border-radius: 4px;
     background: var(--neutral-layer-1);
-}
-
-#result-container:not(.hidden) {
-    display: block;
+    min-height: 100px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 #result {
     white-space: pre-wrap;
     word-break: break-word;
     line-height: 1.5;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-/* Tooltips */
-[data-tooltip] {
-    position: relative;
-}
-
-[data-tooltip]:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.8);
-    color: white;
-    padding: 4px 8px;
+/* Error Container */
+.error-container {
+    padding: 12px;
     border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 1000;
+    background: #fde7e9;
+    border: 1px solid #d13438;
+    margin-top: 12px;
+    color: #d13438;
+    font-size: 13px;
 }
 
-.hidden {
-    display: none !important;
+/* Focus States */
+fluent-button:focus-visible,
+.tab-btn:focus-visible {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+}
+
+/* Disabled States */
+fluent-button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 360px) {
     .tone-selector {
+        height: auto;
+        min-height: 48px;
         flex-direction: column;
-        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+    }
+    
+    .tone-selector label {
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 150px) {
+    .container {
+        padding: 8px;
     }
 
     .action-grid {
         grid-template-columns: 1fr;
+    }
+
+    .tab-buttons {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .action-grid fluent-button {
+        font-size: 12px;
+        min-height: 28px;
     }
 }

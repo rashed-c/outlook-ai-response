@@ -44,11 +44,12 @@
     <div class="container">
         <!-- Tone Selector -->
         <div class="tone-selector">
+            <label for="tone-select">Email Tone:</label>
             <fluent-select id="tone-select">
                 <fluent-option value="formal">Formal</fluent-option>
-                <fluent-option value="professional" selected>Professional</fluent-option>
+                <fluent-option value="professional">Professional</fluent-option>
                 <fluent-option value="casual">Casual</fluent-option>
-                <fluent-option value="direct">Direct</fluent-option>
+                <fluent-option value="direct" selected>Direct</fluent-option>
             </fluent-select>
         </div>
 
@@ -66,189 +67,172 @@
             <div class="tab-content">
                 <!-- Reply Tab Panel -->
                 <div class="tab-pane active" id="reply">
-                <div class="action-grid">
-                    <fluent-button appearance="accent" id="btn-yes" type="button">
-                        <fluent-icon symbol="checkmark"></fluent-icon>
-                        Yes
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-no" type="button">
-                        <fluent-icon symbol="dismiss"></fluent-icon>
-                        No
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-agree" type="button">
-                        <fluent-icon symbol="thumb-like"></fluent-icon>
-                        Agree
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-disagree" type="button">
-                        <fluent-icon symbol="thumb-dislike"></fluent-icon>
-                        Disagree
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-need-time" type="button">
-                        <fluent-icon symbol="clock"></fluent-icon>
-                        Need More Time
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-clarify" type="button">
-                        <fluent-icon symbol="question"></fluent-icon>
-                        Clarify
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-suggest-meeting" type="button">
-                        <fluent-icon symbol="calendar"></fluent-icon>
-                        Suggest Meeting
-                    </fluent-button>
-                </div>
-                <div class="custom-input-section">
-                    <fluent-text-area id="custom-input-reply" placeholder="Enter custom instruction for AI..."></fluent-text-area>
-                    <fluent-button appearance="accent" id="btn-custom-reply" type="button">
-                        <fluent-icon symbol="send"></fluent-icon>
-                        Process Custom Instruction
-                    </fluent-button>
-                </div>
+                    <div class="action-grid">
+                        <fluent-button appearance="accent" id="btn-yes" type="button">
+                            <fluent-icon symbol="checkmark"></fluent-icon>
+                            Yes
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-no" type="button">
+                            <fluent-icon symbol="dismiss"></fluent-icon>
+                            No
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-agree" type="button">
+                            <fluent-icon symbol="thumb-like"></fluent-icon>
+                            Agree
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-disagree" type="button">
+                            <fluent-icon symbol="thumb-dislike"></fluent-icon>
+                            Disagree
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-need-time" type="button">
+                            <fluent-icon symbol="clock"></fluent-icon>
+                            Need More Time
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-clarify" type="button">
+                            <fluent-icon symbol="question"></fluent-icon>
+                            Clarify
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-suggest-meeting" type="button">
+                            <fluent-icon symbol="calendar"></fluent-icon>
+                            Suggest Meeting
+                        </fluent-button>
+                    </div>
+                    <div class="custom-input-section">
+                        <fluent-text-area id="custom-input-reply" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                        <fluent-button appearance="accent" id="btn-custom-reply" type="button">
+                            <fluent-icon symbol="send"></fluent-icon>
+                            Process Custom Instruction
+                        </fluent-button>
+                    </div>
                 </div>
                 
                 <!-- Reply All Tab Panel -->
                 <div class="tab-pane" id="reply-all">
-                <div class="action-grid">
-                    <fluent-button appearance="accent" id="btn-yes-all" type="button">
-                        <fluent-icon symbol="checkmark"></fluent-icon>
-                        Yes
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-no-all" type="button">
-                        <fluent-icon symbol="dismiss"></fluent-icon>
-                        No
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-agree-all" type="button">
-                        <fluent-icon symbol="thumb-like"></fluent-icon>
-                        Agree
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-disagree-all" type="button">
-                        <fluent-icon symbol="thumb-dislike"></fluent-icon>
-                        Disagree
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-need-time-all" type="button">
-                        <fluent-icon symbol="clock"></fluent-icon>
-                        Need More Time
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-clarify-all" type="button">
-                        <fluent-icon symbol="question"></fluent-icon>
-                        Clarify
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-suggest-meeting-all" type="button">
-                        <fluent-icon symbol="calendar"></fluent-icon>
-                        Suggest Meeting
-                    </fluent-button>
-                </div>
-                <div class="custom-input-section">
-                    <fluent-text-area id="custom-input-reply-all" placeholder="Enter custom instruction for AI..."></fluent-text-area>
-                    <fluent-button appearance="accent" id="btn-custom-reply-all" type="button">
-                        <fluent-icon symbol="send"></fluent-icon>
-                        Process Custom Instruction
-                    </fluent-button>
-                </div>
+                    <div class="action-grid">
+                        <fluent-button appearance="accent" id="btn-yes-all" type="button">
+                            <fluent-icon symbol="checkmark"></fluent-icon>
+                            Yes
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-no-all" type="button">
+                            <fluent-icon symbol="dismiss"></fluent-icon>
+                            No
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-agree-all" type="button">
+                            <fluent-icon symbol="thumb-like"></fluent-icon>
+                            Agree
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-disagree-all" type="button">
+                            <fluent-icon symbol="thumb-dislike"></fluent-icon>
+                            Disagree
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-need-time-all" type="button">
+                            <fluent-icon symbol="clock"></fluent-icon>
+                            Need More Time
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-clarify-all" type="button">
+                            <fluent-icon symbol="question"></fluent-icon>
+                            Clarify
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-suggest-meeting-all" type="button">
+                            <fluent-icon symbol="calendar"></fluent-icon>
+                            Suggest Meeting
+                        </fluent-button>
+                    </div>
+                    <div class="custom-input-section">
+                        <fluent-text-area id="custom-input-reply-all" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                        <fluent-button appearance="accent" id="btn-custom-reply-all" type="button">
+                            <fluent-icon symbol="send"></fluent-icon>
+                            Process Custom Instruction
+                        </fluent-button>
+                    </div>
                 </div>
                 
                 <!-- New Email Tab Panel -->
                 <div class="tab-pane" id="new">
-                <div class="action-grid">
-                    <fluent-button appearance="accent" id="btn-project-update" type="button">
-                        <fluent-icon symbol="project"></fluent-icon>
-                        Project Update
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-status-report" type="button">
-                        <fluent-icon symbol="report-document"></fluent-icon>
-                        Status Report
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-meeting-invite" type="button">
-                        <fluent-icon symbol="calendar-invite"></fluent-icon>
-                        Meeting Invite
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-schedule-meeting" type="button">
-                        <fluent-icon symbol="calendar-agenda"></fluent-icon>
-                        Schedule Meeting
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-follow-up" type="button">
-                        <fluent-icon symbol="follow-up"></fluent-icon>
-                        Follow Up
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-introduction" type="button">
-                        <fluent-icon symbol="people"></fluent-icon>
-                        Introduction
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-request-info" type="button">
-                        <fluent-icon symbol="info"></fluent-icon>
-                        Request Information
-                    </fluent-button>
-                </div>
-                <div class="custom-input-section">
-                    <fluent-text-area id="custom-input-new" placeholder="Enter custom instruction for AI..."></fluent-text-area>
-                    <fluent-button appearance="accent" id="btn-custom-new" type="button">
-                        <fluent-icon symbol="send"></fluent-icon>
-                        Process Custom Instruction
-                    </fluent-button>
-                </div>
+                    <div class="action-grid">
+                        <fluent-button appearance="accent" id="btn-project-update" type="button">
+                            <fluent-icon symbol="project"></fluent-icon>
+                            Project Update
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-status-report" type="button">
+                            <fluent-icon symbol="report-document"></fluent-icon>
+                            Status Report
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-meeting-invite" type="button">
+                            <fluent-icon symbol="calendar-invite"></fluent-icon>
+                            Meeting Invite
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-schedule-meeting" type="button">
+                            <fluent-icon symbol="calendar-agenda"></fluent-icon>
+                            Schedule Meeting
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-follow-up" type="button">
+                            <fluent-icon symbol="follow-up"></fluent-icon>
+                            Follow Up
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-introduction" type="button">
+                            <fluent-icon symbol="people"></fluent-icon>
+                            Introduction
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-request-info" type="button">
+                            <fluent-icon symbol="info"></fluent-icon>
+                            Request Information
+                        </fluent-button>
+                    </div>
+                    <div class="custom-input-section">
+                        <fluent-text-area id="custom-input-new" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                        <fluent-button appearance="accent" id="btn-custom-new" type="button">
+                            <fluent-icon symbol="send"></fluent-icon>
+                            Process Custom Instruction
+                        </fluent-button>
+                    </div>
                 </div>
                 
                 <!-- Analyze Tab Panel -->
                 <div class="tab-pane" id="analyze">
-                <div class="action-grid">
-                    <fluent-button appearance="accent" id="btn-proofread" type="button">
-                        <fluent-icon symbol="spell-check"></fluent-icon>
-                        Proofread
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-summarize" type="button">
-                        <fluent-icon symbol="text-bullet-list"></fluent-icon>
-                        Summarize
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-extract-tasks" type="button">
-                        <fluent-icon symbol="checkbox"></fluent-icon>
-                        Extract Tasks
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-detect-deadlines" type="button">
-                        <fluent-icon symbol="timer"></fluent-icon>
-                        Detect Deadlines
-                    </fluent-button>
-                    <fluent-button appearance="accent" id="btn-flag-important" type="button">
-                        <fluent-icon symbol="flag"></fluent-icon>
-                        Flag Important Points
-                    </fluent-button>
-                </div>
-                <div class="custom-input-section">
-                    <fluent-text-area id="custom-input-reply" placeholder="Enter custom instruction for AI..."></fluent-text-area>
-                    <fluent-button appearance="accent" id="btn-custom-reply" type="button">
-                        <fluent-icon symbol="send"></fluent-icon>
-                        Process Custom Instruction
-                    </fluent-button>
-                </div>
-            </fluent-tab-panel>
-            
-            <!-- Custom Tab Panel -->
-            <fluent-tab-panel>
-                <div class="custom-prompt">
-                    <fluent-text-area id="custom-prompt" placeholder="Enter your custom prompt here..."></fluent-text-area>
-                    <fluent-button appearance="accent" id="btn-custom-prompt" type="button">
-                        <fluent-icon symbol="send"></fluent-icon>
-                        Generate Response
-                    </fluent-button>
-                </div>
-                <div class="custom-input-section">
-                    <fluent-text-area id="custom-input-reply" placeholder="Enter custom instruction for AI..."></fluent-text-area>
-                    <fluent-button appearance="accent" id="btn-custom-reply" type="button">
-                        <fluent-icon symbol="send"></fluent-icon>
-                        Process Custom Instruction
-                    </fluent-button>
-                </div>
+                    <div class="action-grid">
+                        <fluent-button appearance="accent" id="btn-proofread" type="button">
+                            <fluent-icon symbol="spell-check"></fluent-icon>
+                            Proofread
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-summarize" type="button">
+                            <fluent-icon symbol="text-bullet-list"></fluent-icon>
+                            Summarize
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-extract-tasks" type="button">
+                            <fluent-icon symbol="checkbox"></fluent-icon>
+                            Extract Tasks
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-detect-deadlines" type="button">
+                            <fluent-icon symbol="timer"></fluent-icon>
+                            Detect Deadlines
+                        </fluent-button>
+                        <fluent-button appearance="accent" id="btn-flag-important" type="button">
+                            <fluent-icon symbol="flag"></fluent-icon>
+                            Flag Important Points
+                        </fluent-button>
+                    </div>
+                    <div class="custom-input-section">
+                        <fluent-text-area id="custom-input-analyze" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                        <fluent-button appearance="accent" id="btn-custom-analyze" type="button">
+                            <fluent-icon symbol="send"></fluent-icon>
+                            Process Custom Instruction
+                        </fluent-button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Loading Spinner -->
-        <div id="loading" style="display: none;">
-            <fluent-progress-ring></fluent-progress-ring>
-            <span>Processing...</span>
-        </div>
+        <!-- Error Container -->
+        <div id="error-container" style="display: none;" class="error-container"></div>
 
-        <!-- Results Area -->
+        <!-- Results Area with Integrated Loading -->
         <div id="result-container" style="display: none;">
             <div id="result"></div>
+            <div id="loading" class="result-loading" style="display: none;">
+                <fluent-progress-ring></fluent-progress-ring>
+                <span>Processing your email...</span>
+            </div>
         </div>
     </div>
 </body>
