@@ -34,6 +34,57 @@ fluent-select {
     min-width: 150px;
 }
 
+/* Tabs */
+.tab-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    color: #0078d4;
+}
+
+.tab-btn.active {
+    color: #0078d4;
+    border-bottom: 2px solid #0078d4;
+}
+
+.tab-content {
+    position: relative;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* Action Grid */
 .action-grid {
     display: grid;
@@ -50,9 +101,24 @@ fluent-button {
     padding: 12px;
 }
 
-/* Custom Section */
-.custom-section {
-    padding: 16px 0;
+/* Custom Input Section */
+.custom-input-section {
+    margin-top: 20px;
+    padding: 15px;
+    border-top: 1px solid var(--neutral-stroke-rest);
+}
+
+.custom-input-section fluent-text-area {
+    width: 100%;
+    min-height: 80px;
+    margin-bottom: 10px;
+    border: var(--border-width) solid var(--neutral-stroke-rest);
+    border-radius: 4px;
+}
+
+.custom-input-section fluent-button {
+    width: 100%;
+    justify-content: center;
 }
 
 fluent-text-area {

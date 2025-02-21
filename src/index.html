@@ -5,14 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <title>Email Assistant Pro</title>
 
-    <!-- Office JavaScript API -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    
+    <!-- Scripts -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
-    
-    <!-- Fluent 2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fluentui/web-components/dist/web-components.min.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@fluentui/web-components/dist/web-components.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <!-- Inline tab switching function -->
+    <script type="text/javascript">
+        function showTab(tabName) {
+            // Hide all tabs
+            var tabs = document.getElementsByClassName('tab-pane');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = 'none';
+            }
+            
+            // Show the selected tab
+            var selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+            
+            // Update button states
+            var buttons = document.getElementsByClassName('tab-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            
+            var activeButton = document.getElementById('btn-' + tabName);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -27,14 +53,19 @@
         </div>
 
         <!-- Main Tabs -->
-        <fluent-tabs>
-            <fluent-tab>Reply</fluent-tab>
-            <fluent-tab>New Email</fluent-tab>
-            <fluent-tab>Analyze</fluent-tab>
-            <fluent-tab>Custom</fluent-tab>
+        <div class="tab-container">
+            <!-- Tab Buttons -->
+            <div class="tab-buttons">
+                <button id="btn-reply" class="tab-btn active" onclick="showTab('reply')">Reply</button>
+                <button id="btn-reply-all" class="tab-btn" onclick="showTab('reply-all')">Reply All</button>
+                <button id="btn-new" class="tab-btn" onclick="showTab('new')">New Email</button>
+                <button id="btn-analyze" class="tab-btn" onclick="showTab('analyze')">Analyze</button>
+            </div>
             
-            <!-- Reply Tab Panel -->
-            <fluent-tab-panel>
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Reply Tab Panel -->
+                <div class="tab-pane active" id="reply">
                 <div class="action-grid">
                     <fluent-button appearance="accent" id="btn-yes" type="button">
                         <fluent-icon symbol="checkmark"></fluent-icon>
@@ -65,10 +96,58 @@
                         Suggest Meeting
                     </fluent-button>
                 </div>
-            </fluent-tab-panel>
-            
-            <!-- New Email Tab Panel -->
-            <fluent-tab-panel>
+                <div class="custom-input-section">
+                    <fluent-text-area id="custom-input-reply" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                    <fluent-button appearance="accent" id="btn-custom-reply" type="button">
+                        <fluent-icon symbol="send"></fluent-icon>
+                        Process Custom Instruction
+                    </fluent-button>
+                </div>
+                </div>
+                
+                <!-- Reply All Tab Panel -->
+                <div class="tab-pane" id="reply-all">
+                <div class="action-grid">
+                    <fluent-button appearance="accent" id="btn-yes-all" type="button">
+                        <fluent-icon symbol="checkmark"></fluent-icon>
+                        Yes
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-no-all" type="button">
+                        <fluent-icon symbol="dismiss"></fluent-icon>
+                        No
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-agree-all" type="button">
+                        <fluent-icon symbol="thumb-like"></fluent-icon>
+                        Agree
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-disagree-all" type="button">
+                        <fluent-icon symbol="thumb-dislike"></fluent-icon>
+                        Disagree
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-need-time-all" type="button">
+                        <fluent-icon symbol="clock"></fluent-icon>
+                        Need More Time
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-clarify-all" type="button">
+                        <fluent-icon symbol="question"></fluent-icon>
+                        Clarify
+                    </fluent-button>
+                    <fluent-button appearance="accent" id="btn-suggest-meeting-all" type="button">
+                        <fluent-icon symbol="calendar"></fluent-icon>
+                        Suggest Meeting
+                    </fluent-button>
+                </div>
+                <div class="custom-input-section">
+                    <fluent-text-area id="custom-input-reply-all" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                    <fluent-button appearance="accent" id="btn-custom-reply-all" type="button">
+                        <fluent-icon symbol="send"></fluent-icon>
+                        Process Custom Instruction
+                    </fluent-button>
+                </div>
+                </div>
+                
+                <!-- New Email Tab Panel -->
+                <div class="tab-pane" id="new">
                 <div class="action-grid">
                     <fluent-button appearance="accent" id="btn-project-update" type="button">
                         <fluent-icon symbol="project"></fluent-icon>
@@ -99,10 +178,17 @@
                         Request Information
                     </fluent-button>
                 </div>
-            </fluent-tab-panel>
-            
-            <!-- Analyze Tab Panel -->
-            <fluent-tab-panel>
+                <div class="custom-input-section">
+                    <fluent-text-area id="custom-input-new" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                    <fluent-button appearance="accent" id="btn-custom-new" type="button">
+                        <fluent-icon symbol="send"></fluent-icon>
+                        Process Custom Instruction
+                    </fluent-button>
+                </div>
+                </div>
+                
+                <!-- Analyze Tab Panel -->
+                <div class="tab-pane" id="analyze">
                 <div class="action-grid">
                     <fluent-button appearance="accent" id="btn-proofread" type="button">
                         <fluent-icon symbol="spell-check"></fluent-icon>
@@ -125,6 +211,13 @@
                         Flag Important Points
                     </fluent-button>
                 </div>
+                <div class="custom-input-section">
+                    <fluent-text-area id="custom-input-reply" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                    <fluent-button appearance="accent" id="btn-custom-reply" type="button">
+                        <fluent-icon symbol="send"></fluent-icon>
+                        Process Custom Instruction
+                    </fluent-button>
+                </div>
             </fluent-tab-panel>
             
             <!-- Custom Tab Panel -->
@@ -136,8 +229,16 @@
                         Generate Response
                     </fluent-button>
                 </div>
-            </fluent-tab-panel>
-        </fluent-tabs>
+                <div class="custom-input-section">
+                    <fluent-text-area id="custom-input-reply" placeholder="Enter custom instruction for AI..."></fluent-text-area>
+                    <fluent-button appearance="accent" id="btn-custom-reply" type="button">
+                        <fluent-icon symbol="send"></fluent-icon>
+                        Process Custom Instruction
+                    </fluent-button>
+                </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Loading Spinner -->
         <div id="loading" style="display: none;">
@@ -150,7 +251,5 @@
             <div id="result"></div>
         </div>
     </div>
-    <!-- Load app script after DOM is ready -->
-    <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
