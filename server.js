@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const https = require('https');
 const axios = require('axios');
-const { getHttpsServerOptions } = require('office-addin-dev-certs');
 
 // Initialize Express app
 const app = express();
@@ -20,7 +18,15 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+
+// Serve static files from both root and src directories
+app.use(express.static(path.join(__dirname)));
 app.use(express.static(path.join(__dirname, 'src')));
+
+// Serve index.html for root path
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src', 'index.html'));
+});
 
 // Validate Claude API key middleware
 const validateApiKey = (req, res, next) => {
@@ -31,23 +37,6 @@ const validateApiKey = (req, res, next) => {
     }
     next();
 };
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Unhandled error:', err);
-    res.status(500).json({ 
-        error: 'An unexpected error occurred',
-        message: process.env.NODE_ENV === 'development' ? err.message : 'Internal server error'
-    });
-});
-
-// Health check endpoint
-app.get('/health', (req, res) => {
-    res.json({ 
-        status: 'ok',
-        apiConfigured: !!process.env.CLAUDE_API_KEY
-    });
-});
 
 // API endpoint for processing emails
 app.post('/api/process-email', validateApiKey, async (req, res) => {
@@ -100,22 +89,10 @@ app.post('/api/process-email', validateApiKey, async (req, res) => {
 
     } catch (error) {
         console.error('Error processing email:', error);
-        console.error('Error details:', {
-            status: error.response?.status,
-            statusText: error.response?.statusText,
-            data: error.response?.data,
-            headers: error.response?.headers
-        });
         
-        // Handle specific API errors
         if (error.response) {
             const status = error.response.status;
             const errorData = error.response.data;
-            
-            console.log('API Error Response:', {
-                status,
-                data: errorData
-            });
             
             if (status === 401) {
                 return res.status(401).json({ 
@@ -135,7 +112,6 @@ app.post('/api/process-email', validateApiKey, async (req, res) => {
             }
         }
         
-        // Handle timeout
         if (error.code === 'ECONNABORTED') {
             return res.status(504).json({ 
                 error: 'Request to Claude API timed out',
@@ -143,7 +119,6 @@ app.post('/api/process-email', validateApiKey, async (req, res) => {
             });
         }
 
-        // Handle network errors
         if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
             return res.status(503).json({ 
                 error: 'Could not connect to Claude API',
@@ -151,7 +126,6 @@ app.post('/api/process-email', validateApiKey, async (req, res) => {
             });
         }
 
-        // Generic error
         res.status(500).json({
             error: 'Failed to process email',
             details: error.message,
@@ -160,16 +134,26 @@ app.post('/api/process-email', validateApiKey, async (req, res) => {
     }
 });
 
-// Get HTTPS options and start server
-getHttpsServerOptions()
-    .then((options) => {
-        const port = process.env.PORT || 3000;
-        https.createServer(options, app).listen(port, () => {
-            console.log(`Server running at https://localhost:${port}`);
-            console.log(`Claude API ${process.env.CLAUDE_API_KEY ? 'configured' : 'not configured'}`);
-        });
-    })
-    .catch(error => {
-        console.error('Failed to get HTTPS options:', error);
-        process.exit(1);
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ 
+        status: 'ok',
+        apiConfigured: !!process.env.CLAUDE_API_KEY
     });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error('Unhandled error:', err);
+    res.status(500).json({ 
+        error: 'An unexpected error occurred',
+        message: process.env.NODE_ENV === 'development' ? err.message : 'Internal server error'
+    });
+});
+
+// Start server
+const port = process.env.PORT || 8080; // Azure Web Apps expects port 8080
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+    console.log(`Claude API ${process.env.CLAUDE_API_KEY ? 'configured' : 'not configured'}`);
+});
