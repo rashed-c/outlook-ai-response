@@ -339,7 +339,7 @@ async function processWithClaude(content, prompt) {
         
         console.log('[processWithClaude] Using tone:', tone);
         
-        const response = await fetch(`https://localhost:3000/api/process-email?t=${timestamp}`, {
+        const response = await fetch(`https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/api/process-email?t=${timestamp}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -12,12 +12,12 @@
   <!-- Basic Information -->
   <ProviderName>YourName</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Claude Email Assistant"/>
-  <Description DefaultValue="Process emails using Claude AI"/>
+  <DisplayName DefaultValue="AutoPen"/>
+  <Description DefaultValue="Process emails with AutoPen"/>
   
   <!-- Use a default icon for now -->
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/assets/icon-64.png"/>
   
   <!-- Required host information -->
   <Hosts>
@@ -35,15 +35,15 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/index.html"/>
+        <SourceLocation DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/index.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
       <TabletSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/index.html"/>
+        <SourceLocation DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/index.html"/>
         <RequestedHeight>250</RequestedHeight>
       </TabletSettings>
       <PhoneSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/index.html"/>
+        <SourceLocation DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/index.html"/>
       </PhoneSettings>
     </Form>
   </FormSettings>
@@ -94,20 +94,20 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="icon-16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-        <bt:Image id="icon-32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-        <bt:Image id="icon-80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        <bt:Image id="icon-16" DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/assets/icon-16.png"/>
+        <bt:Image id="icon-32" DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/assets/icon-32.png"/>
+        <bt:Image id="icon-80" DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="readTaskPaneUrl" DefaultValue="https://localhost:3000/index.html"/>
+        <bt:Url id="readTaskPaneUrl" DefaultValue="https://autopen-e3e2eyezbsdsg5ar.centralus-01.azurewebsites.net/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="groupLabel" DefaultValue="Claude Assistant"/>
-        <bt:String id="openPaneButtonLabel" DefaultValue="Process Email"/>
-        <bt:String id="openPaneButtonTitle" DefaultValue="Process with Claude"/>
+        <bt:String id="groupLabel" DefaultValue="AutoPen"/>
+        <bt:String id="openPaneButtonLabel" DefaultValue="AutoPen"/>
+        <bt:String id="openPaneButtonTitle" DefaultValue="AutoPen"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="openPaneButtonDesc" DefaultValue="Process email content using Claude AI"/>
+        <bt:String id="openPaneButtonDesc" DefaultValue="Process email with AutoPen"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
